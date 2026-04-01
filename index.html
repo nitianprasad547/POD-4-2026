@@ -15,20 +15,20 @@
                 <p class="quoteAuthor m-3"></p>
             </div>
             <div class="border-2 border-amber-600 rounded-xl bg-cyan-100">
-                <button class="bg-emerald-600 text-amber-50 h-[5vmin] w-[25vmin] rounded-2xl m-3" onclick="getQuote()" onselect="getQuote()">New Quote</button>
-                <button class="bg-emerald-600 text-amber-50 h-[5vmin] w-[25vmin] rounded-2xl m-3" id="copyBtn" onclick="copyQuote()" onselect="copyQuote()">Copy</button>
+                <button class="bg-emerald-600 text-amber-50 h-[5vmin] w-[25vmin] rounded-2xl m-3" onclick="getQuote()">New Quote</button>
+                <button class="bg-emerald-600 text-amber-50 h-[5vmin] w-[25vmin] rounded-2xl m-3" id="copyBtn" onclick="copyQuote()">Copy</button>
             </div>
         </div>
     </div>
     <script>
-        let url = 'https://api.quotable.io/random';
+        let url = 'https://corsproxy.io/?https://zenquotes.io/api/random';
         async function getQuote() {
             let responce = await fetch(url);
             console.log(responce);
             let data = await responce.json();
             console.log(data);
-            let quoteContent = data.content;
-            let author = data.author;
+            let quoteContent = data[0].q;
+            let author = data[0].a;
             let quoteOP = document.querySelector('.quote');
             let authorOP = document.querySelector('.quoteAuthor');
             quoteOP.innerHTML = 'Loading...';

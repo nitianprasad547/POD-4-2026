@@ -21,14 +21,14 @@
         </div>
     </div>
     <script>
-        let url = 'https://corsproxy.io/?https://zenquotes.io/api/random';
+        let url = 'https://api.quotable.io/random';
         async function getQuote() {
             let responce = await fetch(url);
             console.log(responce);
             let data = await responce.json();
             console.log(data);
-            let quoteContent = data[0].q;
-            let author = data[0].a;
+            let quoteContent = data.content;
+            let author = data.author;
             let quoteOP = document.querySelector('.quote');
             let authorOP = document.querySelector('.quoteAuthor');
             quoteOP.innerHTML = 'Loading...';

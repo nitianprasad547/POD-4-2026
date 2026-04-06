@@ -21,14 +21,13 @@
         </div>
     </div>
     <script>
-        let url = 'https://api.quotable.io/random';
+        let url = 'https://jacintodesign.github.io/quotes-api/data/quotes.json';
         async function getQuote() {
             let responce = await fetch(url);
-            console.log(responce);
             let data = await responce.json();
-            console.log(data);
-            let quoteContent = data.content;
-            let author = data.author;
+            let random = Math.floor(Math.random()*8262);
+            let quoteContent = data[random].text;
+            let author = data[random].author;
             let quoteOP = document.querySelector('.quote');
             let authorOP = document.querySelector('.quoteAuthor');
             quoteOP.innerHTML = 'Loading...';
